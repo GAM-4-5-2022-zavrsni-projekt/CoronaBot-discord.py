@@ -12,10 +12,12 @@ import keep_alive
 import flask
 import lxml
 import threading
+from discord import Member
+from discord.ext.commands import has_permissions, MissingPermissions
 
 my_secret = os.environ['botid']
 client = commands.Bot(command_prefix="%")
-WHEN = time(6, 53, 0)  # vrijeme
+WHEN = time(13, 42, 0)  # vrijeme
 
 @client.event
 async def on_ready():
@@ -56,6 +58,57 @@ async def info(ctx):
 @client.command(name="ping", help="Command to check response time of the bot")
 async def ping(ctx):
     await ctx.send(f"**Pong! UwU** Latency: {round(client.latency * 1000)}ms")
+
+
+
+
+@client.command(pass_context = True, help="Command admins can use to subscribe a channel to Covid information updates typing %subscribe and adding the channel name without #",name='subscribe')
+async def subscribe(ctx,inputname=""):
+  if (inputname==""):
+    await ctx.send("You should enter a channel's name after the command!")
+  elif ctx.message.author.guild_permissions.administrator:
+    channel = discord.utils.get(ctx.guild.channels, name=inputname)
+    channel_id = channel.id
+    print(channel_id)
+    file1 = open("channel_id.txt","r")
+    lines=file1.readlines()
+    count=0
+    for i in range(len(lines)):
+      if int(lines[i])==channel_id:
+        count+=1
+    file1.close()
+    if count==0:
+      file1 = open("channel_id.txt","a")
+      file1.write(str(channel_id)+'\n')
+      file1.close()
+      await ctx.send("You've sucessfully subscribed! You can unsubscribe anytime.")
+    else:
+      await ctx.send('This channel is already subscribed') 
+  else:
+    await client.send_message(ctx.message.channel, "Looks like you don't have the perm to do this.")
+
+@client.command(pass_context = True, help="Command admins can use to unsubscribe a channel from Covid information updates typing %unsubscribe and adding the channel name without #",name='unsubscribe')
+async def unsubscribe(ctx,inputname=""):
+  if (inputname==""):
+    await ctx.send("You should enter a channel's name after the command!")
+  elif ctx.message.author.guild_permissions.administrator:
+    channel = discord.utils.get(ctx.guild.channels, name=inputname)
+    channel_id = channel.id
+    print(channel_id)
+    with open("channel_id.txt", "r") as input:
+        with open("temp.txt", "w") as output:
+            for line in input:
+                if str(channel_id) not in line.strip("\n"):
+                    output.write(line)
+    os.replace('temp.txt', 'channel_id.txt')
+
+    await ctx.send("You've sucessfully unsubscribed! You can subscribe again anytime.")
+  else:
+    await client.send_message(ctx.message.channel, "Looks like you don't have the perm to do this.")
+
+
+
+
 
 
 @client.group(aliases=["korona", "covid", "kovid"],
