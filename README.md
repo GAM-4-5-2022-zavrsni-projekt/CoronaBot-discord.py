@@ -4,6 +4,7 @@ https://discord.com/api/oauth2/authorize?client_id=975867444583350343&permission
 
 Corona bot programiran je korištenjem discord.py modula u pythonu. Glavni korišteni moduli su bili sljedeći:
 discord.py https://discordpy.readthedocs.io/en/stable/
+
 beautiful soup(povlačenje podataka s web-stranica) https://beautiful-soup-4.readthedocs.io/en/latest/
 asyncio(modul koji dopušta izradu koda i komanda koje se mogu izvoditi istovremeno) https://docs.python.org/3/library/asyncio.html
 
