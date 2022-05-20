@@ -22,12 +22,14 @@ CoronaBot je bot koji služi davanju svakodnevnih obavjesti o broju zaraženih S
 
 %corona [država] - vrača relevantne podatke o epidemiji korone za neku državu. Default država je Hrvatska
 
-%subscribe [ime kanala]
+%subscribe [ime kanala] - pretplačuje upisani kanal na svakodnevne informacije o kovidu u Hrvatskoj
 
-%unsubscribe
+%unsubscribe [ime kanala] - otkazuje pretplatu na upisanom kanalu
+
+Sam bot je hostan na web stranici repl.it te se uz pomoć servera keep_alive.py drži na životu. Također uz pomoć monitora uptimerobot.com stalno se šalju pingovi koji ne daju repl.it-u da izgasi robota. Sve to omogučuje neprekinut i besplatan rad bota. Također je bitno napomenuti da nije moguće samo skopirati kod iz ovoga komjutora te pokrenuti vlastitog bota jer se prvo svaki bot treba registrirati na developer portalu dicorda da bise dobio ključ neophodan za rad s discord.py-em.
 
 
 
 
 # TLDR:
-Kliknite link koji se nalazi gore i stavite bota na neki server. Bot služi dobivanju informacija o novozaraženim od kovida. Podatci dolaze s wordlometers-a.
+Kliknite link koji se nalazi gore i stavite bota na neki server te upišite %info ili % help. Bot služi dobivanju informacija o novozaraženim od kovida. Podatci dolaze s wordlometers-a.
