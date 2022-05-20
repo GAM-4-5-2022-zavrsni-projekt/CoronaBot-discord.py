@@ -7,5 +7,5 @@ Corona bot programiran je korištenjem discord.py modula u pythonu.
 
 
 
-#TLDR:
+# TLDR:
 Kliknite link koji se nalazi gore i stavite bota na neki server. Bot služi dobivanju informacija o novozaraženim od kovida. Podatci dolaze s wordlometers-a
