@@ -13,7 +13,7 @@ CoronaBot je bot koji služi davanju svakodnevnih obavjesti o broju zaraženih S
 %help - daje popis svih komanda bota
 %info - daje kratku informaciju o botu
 %ping - vrača ping bota
-%corona [država] - vrača relevant
+%corona [država] - vrača relevantne
 %subscribe
 %unsubscribe
 
